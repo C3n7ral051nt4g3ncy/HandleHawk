@@ -55,6 +55,16 @@ HandleHawk/
 
 ---
 
+### 🧠 Advanced Nostr Support
+
+- ✅ Supports **pagination** through *all available pages* of Nostr search results (up to hundreds of results!)
+- 🔁 Converts **hex-encoded pubkeys** to **Nostr npub format** using Bech32 encoding
+- 🔗 Generates accurate profile links: `https://nostrapp.link/npub...`
+- 📅 Displays account **creation date and time** in human-readable format
+
+> This allows HandleHawk to return **all Nostr profiles** that match a username, with rich metadata and clickable profile URLs — not just the first few!
+
+
 ## 📦 Installation
 
 ```bash
