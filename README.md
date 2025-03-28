@@ -27,6 +27,7 @@ HandleHawk/
 ├── README.md                    # Tool documentation
 ├── Assets/                      # Assets folder
     └── HandleHawk_Logo.png      # HandleHawk logo
+    └── HandleHawk_small.png     # HandleHawk logo (small)
     └── Report_Sample.html       # HandleHawk report sample
 ```
 
