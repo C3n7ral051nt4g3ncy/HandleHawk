@@ -5,11 +5,11 @@ It scans multiple social platforms to gather publicly available user information
 
 > **"Find the signal in the noise."**
 
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
 <p align="center">
   <img src="Assets/HandleHawk_Logo.png" alt="HandleHawk Logo" width="733">
 </p>
-
-
 
 
 # 📁 Repository Structure
