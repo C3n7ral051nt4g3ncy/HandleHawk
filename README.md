@@ -28,7 +28,7 @@ HandleHawk/
 ├── Assets/                      # Assets folder
     └── HandleHawk_Logo.png      # HandleHawk logo
     └── HandleHawk_small.png     # HandleHawk logo (small)
-    └── Report_Sample.html       # HandleHawk report sample
+    └── Report_Sample[1].html    # HandleHawk report sample
 ```
 
 ---
