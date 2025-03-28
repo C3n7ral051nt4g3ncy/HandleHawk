@@ -92,7 +92,7 @@ A list of upcoming features and improvements planned for **HandleHawk**:
   - [x] Bluesky  
   - [x] TruthSocial  
   - [x] Nostr
-  - [ ] Snapchat  
+  - [x] Snapchat  
 - [x] Twitter (X) scanning via optional RapidAPI key  
 - [x] HTML report generator with profile summaries & images which does more than other username enumeration tools
 - [x] Optional `API_KEY/` folder for key management  
