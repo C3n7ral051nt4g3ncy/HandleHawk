@@ -32,6 +32,8 @@ HandleHawk/
     └── Report_Sample[2].html    # HandleHawk report sample
     └── test1.png                # Testing platforms before launch
     └── test2.png                # Testing platforms before launch
+    └──HandleHawk-cyberguy.pdf   # Clean PDF report from html
+
 ```
 
 ---
