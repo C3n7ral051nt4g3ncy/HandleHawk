@@ -5,6 +5,11 @@ It scans multiple social platforms to gather publicly available user information
 
 > **"Find the signal in the noise."**
 
+<p align="center">
+  <img src="Assets/HandleHawk_Logo.png" alt="HandleHawk Logo" width="733">
+</p>
+
+
 
 
 # 📁 Repository Structure
