@@ -14,6 +14,7 @@ import sys
 import time
 import threading
 from bs4 import BeautifulSoup
+from bech32 import bech32_encode, convertbits 
 
 # cloudscraper for cloudfare bypass
 try:
@@ -133,52 +134,70 @@ def check_bluesky(username):
         ]
     return [{"platform": "Bluesky", "error": "No profile found"}]
 
+# convert hex to npub to get the profile link
+def hex_to_npub(hex_key):
+    """Convert hex pubkey to npub format for nostrapp.link"""
+    data = convertbits(bytes.fromhex(hex_key), 8, 5)
+    return bech32_encode("npub", data)
 
 # Nostr check function
 def check_nostr(username):
-    url = f"https://api.nostr.wine/search?query={username}"
-    try:
-        res = requests.get(url, headers=HEADERS, timeout=10)
-        if res.status_code != 200:
-            return [{"platform": "Nostr", "error": "No profile found"}]
+    base_url = "https://api.nostr.wine/search"
+    page = 1
+    profiles = []
 
-        data = res.json().get("data", [])
-        profiles = []
-        for item in data:
-            if item.get("kind") != 0:
+    while True:
+        url = f"{base_url}?query={username}&page={page}"
+        print(f"\r🔄 Checking Nostr (page {page})...", end="")
+        try:
+            res = requests.get(url, headers=HEADERS, timeout=10)
+            if res.status_code == 429:
+                print(f"\n⏳ Rate limited on page {page}. Waiting 10 seconds...")
+                time.sleep(10)
                 continue
-            try:
-                content = json.loads(item.get("content", ""))
-            except json.JSONDecodeError:
-                continue
-            profiles.append(
-                {
+
+            if res.status_code != 200:
+                break
+
+            data = res.json()
+            page_results = data.get("data", [])
+            for item in page_results:
+                if item.get("kind") != 0:
+                    continue
+                try:
+                    content = json.loads(item.get("content", ""))
+                except json.JSONDecodeError:
+                    continue
+
+                pubkey = item.get("pubkey", "")
+                npub = hex_to_npub(pubkey) if pubkey else ""
+                profiles.append({
                     "platform": "Nostr",
                     "name": content.get("name", ""),
-                    "display_name": content.get("display_name")
-                    or content.get("displayName", ""),
+                    "display_name": content.get("display_name", ""),
                     "about": content.get("about", ""),
                     "avatar": content.get("picture", ""),
-                    "banner": content.get("banner", ""),
                     "website": content.get("website", ""),
                     "nip05": content.get("nip05", ""),
                     "created_at": (
-                        datetime.utcfromtimestamp(item.get("created_at")).strftime(
-                            "%Y-%m-%d"
-                        )
-                        if item.get("created_at")
-                        else ""
+                        datetime.utcfromtimestamp(item.get("created_at")).strftime("%Y-%m-%d %H:%M:%S")
+                        if item.get("created_at") else ""
                     ),
-                    "profile_url": f"https://nostr.band/{item.get('pubkey')}",
-                }
-            )
-        return (
-            profiles
-            if profiles
-            else [{"platform": "Nostr", "error": "No profile found"}]
-        )
-    except:
-        return [{"platform": "Nostr", "error": "No profile found"}]
+                    "profile_url": f"https://nostrapp.link/{npub}" if npub else ""
+                })
+
+            pagination = data.get("pagination", {})
+            total_pages = pagination.get("total_pages", page)
+            if pagination.get("last_page", True) or page >= total_pages:
+                print(f"\r✅ Nostr check complete ({page}/{total_pages})")
+                break
+            time.sleep(1.5) 
+            page += 1
+        except Exception as e:
+            print(f"\r❌ Error checking Nostr (page {page}): {str(e)}")
+            break
+
+    return profiles or [{"platform": "Nostr", "error": "No profile found"}]
 
 
 # Mastodon check function

@@ -2,3 +2,4 @@ requests
 beautifulsoup4
 selenium
 cloudscraper
+bech32
