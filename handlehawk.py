@@ -440,20 +440,24 @@ if __name__ == "__main__":
 
     if TWITTER_API_KEY:
         checks.append(("Twitter", lambda u: check_twitter_via_api(u, TWITTER_API_KEY)))
+    else:
+        print("⚠️  No Twitter API key found. Skipping Twitter check.")
 
-        for name, func in checks:
-            spinner = Spinner(f"Checking {name}")
-            spinner.start()
-            try:
-                result = func(username)
-                if result and "error" not in result[0]:
-                    all_results += result
-                else:
-                    all_results.append({"platform": name, "error": "No profile found"})
-            except:
+    # Perform all checks
+    for name, func in checks:
+        spinner = Spinner(f"Checking {name}")
+        spinner.start()
+        try:
+            result = func(username)
+            if result and "error" not in result[0]:
+                all_results += result
+            else:
                 all_results.append({"platform": name, "error": "No profile found"})
-            spinner.stop()
+        except Exception as e:
+            all_results.append({"platform": name, "error": f"Error: {str(e)}"})
+        spinner.stop()
 
+    # Generate report and print summary
     generate_html_report(all_results, username)
 
     print("\n🔍 Summary:")
