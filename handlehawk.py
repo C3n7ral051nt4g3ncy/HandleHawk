@@ -79,7 +79,7 @@ PURPLE = "\033[34m"
 WHITE = "\033[97m"
 
 # ascii art
-hawk_ascii = f"""
+hawk_ascii = rf"""
 {PURPLE}⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣲⣶⠒⠷⠶⠤⠴⠦⠤⠤⢤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣴⣶⠚⠛⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠑⢦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡠⠴⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠤⢌⣛⠶⢤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -110,7 +110,7 @@ print(hawk_ascii)
 
 # Strip HTML Tags
 def strip_html_tags(text):
-    return re.sub("<[^<]+?>", "", unescape(text or ""))
+    return re.sub(r"<[^<]+?>", "", unescape(text or ""))
 
 
 # Bluesky check function
@@ -288,9 +288,7 @@ def check_reddit(username):
                 "profile_url": f"https://www.reddit.com/user/{data.get('name')}",
                 "avatar": data.get("icon_img", ""),
                 "created_at": (
-                    datetime.utcfromtimestamp(data.get("created_utc")).strftime(
-                        "%Y-%m-%d"
-                    )
+                    datetime.datetime.fromtimestamp(data.get("created_utc"), datetime.UTC).strftime("%Y-%m-%d %H:%M:%S")
                     if data.get("created_utc")
                     else ""
                 ),
