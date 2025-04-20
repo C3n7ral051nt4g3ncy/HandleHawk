@@ -25,6 +25,9 @@ HandleHawk/
 ├── handlehawk.py                # Main script
 ├── requirements.txt             # Python dependencies
 ├── README.md                    # Tool documentation
+├── platforms/                   # External platform modules added after tool creation
+│   ├── __init__.py              # Makes platforms a package
+│   └── paypal.py                # PayPal Module
 ├── Assets/                      # Assets folder
     └── HandleHawk_Logo.png      # HandleHawk logo
     └── HandleHawk_small.png     # HandleHawk logo (small)
@@ -44,9 +47,10 @@ HandleHawk/
   - Bluesky
   - Mastodon
   - Nostr
-  - TruthSocial
+  - PayPal
   - Reddit
   - Snapchat
+  - TruthSocial
   - Twitter (via optional RapidAPI)
 - 🛡️ Resilient to Cloudflare thanks to cloudscraper
 - 📄 Generates a clean, dark-mode HTML report
