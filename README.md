@@ -35,7 +35,15 @@ HandleHawk/
     └── Report_Sample[2].html    # HandleHawk report sample
     └── test1.png                # Testing platforms before launch
     └── test2.png                # Testing platforms before launch
-    └──HandleHawk-cyberguy.pdf   # Clean PDF report from html
+    └── HandleHawk-cyberguy.pdf  # Clean PDF report from html
+    └── Bluesky_Logo.png
+    └── Mastodon_Logo.png
+    └── Nostr_Logo.png
+    └── Paypal_Logo.png
+    └── Reddit_Logo.png
+    └── Snapchat_Logo.png
+    └── Truth-Social_Logo.png
+    └── X_Logo.png
 
 ```
 
