@@ -14,7 +14,11 @@ import sys
 import time
 import threading
 from bs4 import BeautifulSoup
-from bech32 import bech32_encode, convertbits 
+from bech32 import bech32_encode, convertbits
+
+#Added platforms after version 1.0
+from platforms import paypal
+
 
 # cloudscraper for cloudfare bypass
 try:
@@ -103,7 +107,7 @@ hawk_ascii = rf"""
  |_|  |_|\__,_|_| |_|\__,_|_|\___|_|  |_|\__,_| \_/\_/ |_|\_\{RESET}
 
 {GREEN} HandleHawk 🦅  Multi-platform User Recon 🔎 {RESET}                                
-{PURPLE} Version 1.0 {RESET}
+{PURPLE} Version 1.1 {RESET}
 """
 print(hawk_ascii)
 
@@ -406,6 +410,21 @@ def generate_html_report(results, username):
 
     for result in results:
         html += f"<div class='platform'>\n<h3>{result['platform']}</h3>\n"
+
+        # Custom PayPal rendering
+        if result["platform"] == "PayPal":
+            html += "<ul>"
+            for key in ["full_name", "first_name", "last_name", "bio", "currency"]:
+                if result.get(key):
+                    html += f"<li><strong>{key.replace('_', ' ').title()}:</strong> {result[key]}</li>"
+            if result.get("avatar"):
+                html += f"<li><img src='{result['avatar']}' alt='Profile Photo'></li>"
+            if result.get("profile_url"):
+                html += f"<li><a href='{result['profile_url']}' target='_blank'>{result['profile_url']}</a></li>"
+            html += "</ul>\n</div>\n"
+            continue  # Skip default rendering
+
+        # Default rendering
         if "error" in result:
             html += f"<p class='error'>No profile found</p>\n"
         else:
@@ -455,6 +474,7 @@ if __name__ == "__main__":
         ("TruthSocial", check_truthsocial),
         ("Reddit", check_reddit),
         ("Snapchat", check_snapchat),
+        ("PayPal", paypal.check_paypal),
     ]
 
     if TWITTER_API_KEY:
