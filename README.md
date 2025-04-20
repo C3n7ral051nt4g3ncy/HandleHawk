@@ -140,7 +140,17 @@ A list of upcoming features and improvements planned for **HandleHawk**:
 - [x] Twitter (X) scanning via optional RapidAPI key  
 - [x] HTML report generator with profile summaries & images which does more than other username enumeration tools
 - [x] Optional `API_KEY/` folder for key management  
-- [x] User-agent spoofing & anti-bot headers  
+- [x] User-agent spoofing & anti-bot headers
+
+---
+
+### ✅ v1.1 (Completed)
+ 
+ - [x] PayPal module added (platforms/paypal.py)
+ - [x] Extract PayPal full name, currency, and avatar
+ - [x] Refactored architecture to support modular platform checks
+ - [x] Improved HTML report with PayPal-specific display logic
+ - [x] Clean integration of external paypal.py instead of monolithic block
 
 ---
 
