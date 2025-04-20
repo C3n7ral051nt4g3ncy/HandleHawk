@@ -60,7 +60,7 @@ HandleHawk/
 | Reddit      | <img src="Assets/Reddit_Logo.png" alt="Reddit" height="40"/>      | ✅ |
 | Snapchat    | <img src="Assets/Snapchat_Logo.png" alt="Snapchat" height="40"/>  | ✅ |
 | TruthSocial | <img src="Assets/Truth-Social_Logo.png" alt="Nostr" height="40"/> | ✅ |
-| X (Twitter) | <img src="Assets/X_Logo.png" alt="X/Twitter" height="40"/>        | ✅ |
+| X (Twitter) | <img src="Assets/X_Logo.png" alt="X/Twitter" height="40"/>        | ✅ + API |
 
 ---
 
