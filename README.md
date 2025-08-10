@@ -153,8 +153,14 @@ A list of upcoming features and improvements planned for **HandleHawk**:
  - [x] Clean integration of external paypal.py instead of monolithic block
 
 ---
+### ✅ v1.2 (Completed)
+ 
+ - [x] Hudson Rock module added to pull stealerinfo from a username module added (platforms/hudsonrock.py)
 
-### 🧠 Planned for v1.2
+---
+
+
+### 🧠 Planned for v1.3
   
 - [ ] CSV report export  
 - [ ] JSON output for automation
