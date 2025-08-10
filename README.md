@@ -53,14 +53,15 @@ HandleHawk/
 
 | Platform | Logo | Supported |
 |----------|------|-----------|
-| BlueSky     | <img src="Assets/Bluesky_Logo.png" alt="BlueSky" height="40"/>    | ✅ |
-| Mastodon    | <img src="Assets/Mastodon_Logo.png" alt="Mastodon" height="40"/>  | ✅ |
-| Nostr       | <img src="Assets/Nostr_Logo.png" alt="Nostr" height="40"/>        | ✅ |
-| PayPal      | <img src="Assets/Paypal_Logo.png" alt="PayPal" height="40"/>      | ✅ |
-| Reddit      | <img src="Assets/Reddit_Logo.png" alt="Reddit" height="40"/>      | ✅ |
-| Snapchat    | <img src="Assets/Snapchat_Logo.png" alt="Snapchat" height="40"/>  | ✅ |
-| TruthSocial | <img src="Assets/Truth-Social_Logo.png" alt="Nostr" height="40"/> | ✅ |
-| X (Twitter) | <img src="Assets/X_Logo.png" alt="X/Twitter" height="40"/>        | ✅ + API |
+| BlueSky     | <img src="Assets/Bluesky_Logo.png" alt="BlueSky" height="40"/>           | ✅ |
+| Hudson Rock | <img src="Assets/Hudsonrock_Logo.png" alt="Hudson Rock" height="40"/>    | ✅ |
+| Mastodon    | <img src="Assets/Mastodon_Logo.png" alt="Mastodon" height="40"/>         | ✅ |
+| Nostr       | <img src="Assets/Nostr_Logo.png" alt="Nostr" height="40"/>               | ✅ |
+| PayPal      | <img src="Assets/Paypal_Logo.png" alt="PayPal" height="40"/>             | ✅ |
+| Reddit      | <img src="Assets/Reddit_Logo.png" alt="Reddit" height="40"/>             | ✅ |
+| Snapchat    | <img src="Assets/Snapchat_Logo.png" alt="Snapchat" height="40"/>         | ✅ |
+| TruthSocial | <img src="Assets/Truth-Social_Logo.png" alt="Nostr" height="40"/>        | ✅ |
+| X (Twitter) | <img src="Assets/X_Logo.png" alt="X/Twitter" height="40"/>               | ✅ + API |
 
 ---
 
@@ -75,6 +76,7 @@ HandleHawk/
   - Snapchat
   - TruthSocial
   - Twitter (via optional RapidAPI)
+- 🥷🏻 Infostealer information from a username with the Hudson Rock module
 - 🛡️ Resilient to Cloudflare thanks to cloudscraper
 - 📄 Generates a clean, dark-mode HTML report
 - 🧠 Smart spinner for each check (UX-friendly)
