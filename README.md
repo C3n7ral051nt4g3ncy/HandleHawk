@@ -28,15 +28,18 @@ HandleHawk/
 ├── platforms/                   # External platform modules added after tool creation
 │   ├── __init__.py              # Makes platforms a package
 │   └── paypal.py                # PayPal Module
+│   └── hudsonrock.py            # Hudson Rock Module
 ├── Assets/                      # Assets folder
     └── HandleHawk_Logo.png      # HandleHawk logo
     └── HandleHawk_small.png     # HandleHawk logo (small)
     └── Report_Sample[1].html    # HandleHawk report sample
     └── Report_Sample[2].html    # HandleHawk report sample
+    └── Report_Sample[3].html    # HandleHawk report sample 
     └── test1.png                # Testing platforms before launch
     └── test2.png                # Testing platforms before launch
     └── HandleHawk-cyberguy.pdf  # Clean PDF report from html
     └── Bluesky_Logo.png
+    └── Hudsonrock_Logo.png
     └── Mastodon_Logo.png
     └── Nostr_Logo.png
     └── Paypal_Logo.png
