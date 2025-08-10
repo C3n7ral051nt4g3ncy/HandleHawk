@@ -18,6 +18,7 @@ from bech32 import bech32_encode, convertbits
 
 #Added platforms after version 1.0
 from platforms import paypal
+from platforms import hudsonrock
 
 
 # cloudscraper for cloudfare bypass
@@ -107,7 +108,7 @@ hawk_ascii = rf"""
  |_|  |_|\__,_|_| |_|\__,_|_|\___|_|  |_|\__,_| \_/\_/ |_|\_\{RESET}
 
 {GREEN} HandleHawk 🦅  Multi-platform User Recon 🔎 {RESET}                                
-{PURPLE} Version 1.1 {RESET}
+{PURPLE} Version 1.2 {RESET}
 """
 print(hawk_ascii)
 
@@ -424,6 +425,28 @@ def generate_html_report(results, username):
             html += "</ul>\n</div>\n"
             continue  # Skip default rendering
 
+        # Custom HudsonRock rendering
+        if result["platform"] == "HudsonRock":
+            html += "<ul>"
+            for key, label in [
+                ("date_compromised", "Date Compromised"),
+                ("stealer_family", "Stealer Family"),
+                ("computer_name", "Computer Name"),
+                ("operating_system", "Operating System"),
+                ("malware_path", "Malware Path"),
+                ("ip", "IP Address"),
+                ("total_corporate_services", "Total Corporate Services"),
+                ("total_user_services", "Total User Services"),
+                ("top_passwords", "Top Passwords"),
+                ("top_logins", "Top Logins"),
+            ]:
+                if result.get(key):
+                    html += f"<li><strong>{label}:</strong> {result[key]}</li>"
+            if result.get("profile_url"):
+                html += f"<li><a href='{result['profile_url']}' target='_blank'>{result['profile_url']}</a></li>"
+            html += "</ul>\n</div>\n"
+            continue  # Skip default rendering
+
         # Default rendering
         if "error" in result:
             html += f"<p class='error'>No profile found</p>\n"
@@ -475,6 +498,7 @@ if __name__ == "__main__":
         ("Reddit", check_reddit),
         ("Snapchat", check_snapchat),
         ("PayPal", paypal.check_paypal),
+        ("HudsonRock", hudsonrock.check_hudsonrock),
     ]
 
     if TWITTER_API_KEY:
